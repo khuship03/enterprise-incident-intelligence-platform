@@ -1,0 +1,58 @@
+[
+  {
+    "id": "RB-NET-001",
+    "title": "Network latency and packet loss",
+    "category": "network",
+    "tags": ["network", "latency", "packet loss", "dns", "timeout", "connectivity"],
+    "symptoms": ["Intermittent connection failures", "Elevated request latency", "Packet loss or DNS lookup failures"],
+    "steps": ["Check service and network monitoring for latency, packet loss, and recent changes.", "Verify DNS resolution and connectivity from more than one affected location.", "Compare the incident start time with network, firewall, and deployment changes.", "Escalate to Network Operations if the fault spans multiple services or locations."]
+  },
+  {
+    "id": "RB-DB-001",
+    "title": "Database connection saturation",
+    "category": "database",
+    "tags": ["database", "sql", "connection pool", "deadlock", "query", "postgresql", "mysql"],
+    "symptoms": ["Connection pool exhaustion", "Slow or blocked queries", "Database timeouts"],
+    "steps": ["Check database availability, active connections, connection-pool saturation, and query latency.", "Review recent schema, query, and application deployment changes.", "Inspect slow-query and deadlock logs before making data or configuration changes.", "Escalate to Database Operations; do not terminate sessions or modify production data without approval."]
+  },
+  {
+    "id": "RB-APP-001",
+    "title": "Application errors after deployment",
+    "category": "application",
+    "tags": ["application", "api", "deployment", "500", "5xx", "crash", "latency", "release"],
+    "symptoms": ["HTTP 5xx responses", "Elevated application error rate", "Failures beginning after a release"],
+    "steps": ["Check application health checks, error rates, and logs around the incident start time.", "Compare the current release with the last known healthy release.", "Validate dependent services, configuration, and secrets without exposing secret values.", "Follow the approved rollback or mitigation procedure and notify Application Support."]
+  },
+  {
+    "id": "RB-IAM-001",
+    "title": "Authentication and access failures",
+    "category": "authentication",
+    "tags": ["authentication", "authorization", "login", "sso", "token", "permission", "identity"],
+    "symptoms": ["Login failures", "Expired or rejected tokens", "Unexpected access-denied responses"],
+    "steps": ["Determine whether failures affect one user, one application, or all users.", "Check identity-provider health and recent SSO, certificate, or policy changes.", "Verify token expiry and clock synchronization without collecting passwords or live tokens.", "Route access-policy and identity-provider issues to Identity and Access Management."]
+  },
+  {
+    "id": "RB-STO-001",
+    "title": "Storage capacity and I/O degradation",
+    "category": "storage",
+    "tags": ["storage", "disk", "capacity", "iops", "volume", "filesystem", "space"],
+    "symptoms": ["Low disk space", "Elevated storage latency", "Read/write failures"],
+    "steps": ["Check capacity, I/O latency, filesystem health, and storage service alerts.", "Identify recent growth or workload changes and confirm the affected volumes.", "Avoid deleting files or expanding production volumes without the normal change approval.", "Escalate to Storage Operations with affected volume identifiers and timestamps."]
+  },
+  {
+    "id": "RB-SEC-001",
+    "title": "Potential security incident",
+    "category": "security",
+    "tags": ["security", "breach", "suspicious", "malware", "credential", "unauthorized", "exfiltration"],
+    "symptoms": ["Suspicious authentication patterns", "Unexpected privilege changes", "Possible unauthorized access"],
+    "steps": ["Preserve relevant timestamps and logs using approved evidence-handling procedures.", "Do not attempt destructive cleanup or disclose sensitive incident details in broad channels.", "Follow the organization's security incident response and escalation process.", "Route to the Security Operations team for investigation and containment decisions."]
+  },
+  {
+    "id": "RB-GEN-001",
+    "title": "General service degradation triage",
+    "category": "unknown",
+    "tags": ["service", "degradation", "unknown", "availability", "monitoring", "triage"],
+    "symptoms": ["Unexpected service behavior", "Unclear initial failure domain"],
+    "steps": ["Confirm the start time, scope, affected users, and observed impact.", "Check service health dashboards and recent changes.", "Collect sanitized logs and correlation IDs while avoiding credentials and personal data.", "Keep the incident with the Service Desk until an owning resolver group is identified."]
+  }
+]
